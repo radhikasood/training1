@@ -4,7 +4,7 @@ var url="mongodb://radhikasood1006:meena24@ds131782.mlab.com:31782/training";
 const db= require("monk")(url);
 const docs=db.get('abc');
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/we', function(req, res, next) {
     //res.send('respond with a resource');
     docs.find({},function(err,docs)
     {
@@ -21,6 +21,24 @@ router.get('/wel', function(req, res, next) {
             res.send("successful");
     })
 });
+router.get('/w', function(req, res, next) {
+    docs.update(
+            { "name": "radhika"
+            },
+        {
+            $push: {
+                "group":{"name":"user 3"}
+            }
+        },
+                function(err,docs) {
+                    if (err)
+                        console.log(err);
+                    else
+                        res.send("user added");
+                }
+    )
+});
+
 
 /* GET home page. */
 router.get('/welcome', function(req, res, next) {
