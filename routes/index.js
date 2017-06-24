@@ -8,7 +8,7 @@ router.get('/we', function(req, res, next) {
     //res.send('respond with a resource');
     docs.find({},function(err,docs)
     {
-        if(err)console.log(err)
+        if(err)console.log(err);
         else res.json(docs[0]);
     })
 });
