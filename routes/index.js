@@ -13,8 +13,10 @@ router.get('/we', function(req, res, next) {
     })
 });
 
-router.get('/wel', function(req, res, next) {
-    docs.insert({"name":"","age":""},function (err,docs) {
+router.post('/wel', function(req, res, next) {              //earlier it was router.get
+    var username = req.body.name;
+    var pass = req.body.password;
+    docs.insert({"name":username,"password":pass},function (err,docs) {
         if(err)
             console.log(err);
         else
