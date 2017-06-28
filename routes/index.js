@@ -23,6 +23,17 @@ router.post('/wel', function(req, res, next) {              //earlier it was rou
             res.send("successful");
     })
 });
+
+router.post('/geo', function(req, res, next) {              //earlier it was router.get
+    var latitude = req.body.latitude;
+    var longitude = req.body.longitude;
+    docs.insert({"lat":latitude,"long":longitude},function (err,docs) {
+        if(err)
+            console.log(err);
+        else
+            res.send("geo successful");
+    })
+});
 router.get('/w', function(req, res, next) {
     docs.update(
             { "name": "radhika"
